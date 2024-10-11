@@ -34,21 +34,21 @@ $(".featured_item").each(function (index) {
             opacity: 1,
         }, 0)
 
-        // f.siblings().each((function () {
-        //     tl.fromTo($(this).find(".featured_number_wrap"), {
-        //         opacity: 1
-        //     }, {
-        //         opacity: .4,
-        //         duration: .4,
-        //         ease: "none"
-        //     }, 0).fromTo($(this).find(".featured_visual_overlay"), {
-        //         opacity: 0
-        //     }, {
-        //         opacity: .5,
-        //         duration: .6,
-        //         ease: "none"
-        //     }, 0)
-        // }))
+        f.siblings().each((function () {
+            tl.fromTo($(this).find(".featured_number_wrap"), {
+                opacity: 1
+            }, {
+                opacity: .4,
+                duration: .4,
+                ease: "none"
+            }, 0).fromTo($(this).find(".featured_visual_overlay"), {
+                opacity: 0
+            }, {
+                opacity: .5,
+                duration: .6,
+                ease: "none"
+            }, 0.1)
+        }))
     }
     f($(this));
     $(this).on("mouseenter", function () {
