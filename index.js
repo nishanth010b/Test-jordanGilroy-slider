@@ -24,17 +24,41 @@ $(".featured_item").each(function (index) {
             ease: "power1.out",
             duration: 1
         }, 0)
+        .fromTo(f.find(".featured_cover_link"), {
+            y: "100%"
+        }, {
+            y: "0%",
+            duration: .8,
+        }, "<0.1")
+        .to(f.find(".featured_visual_border"), {
+            opacity: 1,
+        }, 0)
 
+        f.siblings().each((function () {
+            tl.fromTo($(this).find(".featured_number_wrap"), {
+                opacity: 1
+            }, {
+                opacity: .4,
+                duration: .4,
+                ease: "none"
+            }, 0).fromTo($(this).find(".featured_visual_overlay"), {
+                opacity: 0
+            }, {
+                opacity: .5,
+                duration: .6,
+                ease: "none"
+            }, 0)
+        }))
     }
     f($(this));
     $(this).on("mouseenter", function () {
-        $(".nav_wrap, .featured_item").addClass("is-light");
+        $(".nav_wrap, .featured_number_wrap").addClass("is-light");
         tl.kill();
         f($(this));
         tl.restart()
     })
     $(this).on("mouseleave", function () {
-        $(".nav_wrap, .featured_item").removeClass("is-light");
+        $(".nav_wrap, .featured_number_wrap").removeClass("is-light");
         tl.timeScale(1.3);
         tl.reverse()
     })
