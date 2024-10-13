@@ -1,7 +1,7 @@
 $(".featured_item").each(function (index) {
     let tl = gsap.timeline( {paused : true});
     const f = f => {
-        tl.clear();
+        tl.seek(0).clear();
         tl = gsap.timeline({
             paused: true,
             defaults: { 
@@ -53,13 +53,12 @@ $(".featured_item").each(function (index) {
     f($(this));
     $(this).on("mouseenter", function () {
         $(".nav_wrap, .featured_number_wrap").addClass("is-light");
-        tl.kill();
+        // tl.kill();
         f($(this));
         tl.restart()
     })
     $(this).on("mouseleave", function () {
         $(".nav_wrap, .featured_number_wrap").removeClass("is-light");
-        tl.timeScale(1.3);
-        tl.reverse()
+        tl.timeScale(1.3).reverse()
     })
   });
